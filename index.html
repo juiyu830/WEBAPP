@@ -11,7 +11,7 @@
   <style>
     :root{--bg:#f6f4ef;--paper:#fffefa;--ink:#20251f;--muted:#8a8e83;--line:#e9e7df;--green:#385b4a;--green2:#e9f0e8;--lime:#c6da8a;--orange:#ee9a6d;--shadow:0 12px 40px #293b2410;--radius:20px}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a8c38b;outline-offset:2px}.app{min-height:100vh;display:grid;grid-template-columns:246px minmax(420px,1fr) 330px;max-width:1600px;margin:auto;padding:22px;gap:22px}.sidebar,.panel,.main{min-width:0}.sidebar{padding:18px 12px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:11px;padding:0 12px 36px;font-size:19px;font-weight:700;letter-spacing:-.5px}.brand-mark{width:34px;height:34px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:18px}.brand span:last-child{font-size:10px;color:#9ca198;letter-spacing:1.6px;font-weight:600;display:block;margin-top:1px}.nav-label{font-size:10px;letter-spacing:1.4px;color:#a2a398;font-weight:700;padding:0 13px;margin:8px 0 10px}.nav-btn{border:0;background:transparent;color:#777d73;padding:11px 13px;border-radius:12px;display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:3px;transition:.2s}.nav-btn:hover{background:#eeede7}.nav-btn.active{background:var(--green2);color:var(--green);font-weight:600}.nav-btn .ico{width:18px;text-align:center;font-size:16px}.nav-count{margin-left:auto;background:#dbe7d8;color:var(--green);border-radius:20px;padding:2px 7px;font-size:10px}.side-bottom{margin-top:auto}.week-card{margin:12px 4px 18px;background:#e9eee3;border-radius:18px;padding:17px}.week-card .eyebrow{font-size:10px;letter-spacing:1px;color:#798673}.week-card strong{display:block;font-size:24px;margin-top:8px}.week-card small{color:#7b8375}.profile{padding:14px 10px;border-top:1px solid var(--line);display:flex;align-items:center;gap:11px}.avatar{width:36px;height:36px;border-radius:50%;background:#e8c3a7;color:#714932;display:grid;place-items:center;font-weight:700}.profile strong{font-size:12px}.profile small{display:block;color:var(--muted);margin-top:3px;font-size:10px}.main{padding:13px 6px}.topbar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 34px}.breadcrumb{font-size:12px;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn,.soft-btn{border:1px solid var(--line);background:var(--paper);border-radius:11px;color:var(--ink);height:38px;padding:0 12px}.icon-btn{width:38px;padding:0}.icon-btn:hover,.soft-btn:hover{background:#f1f3ec}.date-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.date-heading h1{font-size:30px;letter-spacing:-1.2px;margin:0 0 7px}.date-heading p{color:var(--muted);margin:0;font-size:12px}.today-chip{font-size:10px;border-radius:20px;padding:7px 11px;background:#e7eee1;color:#49644c}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.section-head h2{font-size:14px;margin:0;font-weight:700}.section-head small{color:var(--muted);font-size:11px}.quick-add{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:20px;box-shadow:0 3px 12px #17250d05}.plus{border:0;background:var(--green);color:white;width:25px;height:25px;border-radius:8px;font-size:19px;line-height:1}.quick-add input{border:0;background:transparent;outline:0;flex:1;min-width:0;color:var(--ink)}.quick-add input::placeholder{color:#a0a197}.quick-add .add-hint{font-size:10px;color:#a0a197}.filter-row{display:flex;gap:6px;margin:0 0 15px}.filter{border:0;background:transparent;color:#888d82;padding:7px 11px;border-radius:9px;font-size:11px}.filter.active{background:#e9eee3;color:var(--green);font-weight:600}.task-list{display:flex;flex-direction:column;gap:8px}.task{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid #eeece5;border-radius:14px;padding:13px 14px;min-height:60px;transition:.18s}.task:hover{box-shadow:0 5px 18px #25391b0a;transform:translateY(-1px)}.check{width:19px;height:19px;border:1.5px solid #c8ccc0;border-radius:6px;flex:none;display:grid;place-items:center;color:white;background:transparent;padding:0}.check:hover{border-color:var(--green)}.task-body{flex:1;min-width:0}.task-title{font-size:12px;font-weight:600}.task-meta{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:10px;margin-top:5px}.task.done .task-title{text-decoration:line-through;color:#a6aaa0}.task.done .check{background:var(--green);border-color:var(--green)}.task.done .check:after{content:'✓';font-size:12px}.due{color:#b87450}.overdue{color:#c45b4d}.carry{background:#f2eee5;color:#89785d;padding:3px 6px;border-radius:5px;font-size:9px}.task-tools{display:flex;align-items:center;gap:7px}.tag{font-size:9px;color:#72836e;background:#eef2e8;padding:5px 8px;border-radius:6px}.more{border:0;background:transparent;color:#a5a79e;font-size:17px;padding:3px}.divider-label{font-size:10px;color:#a1a398;letter-spacing:.7px;font-weight:700;margin:22px 0 10px}.empty{padding:24px;text-align:center;color:var(--muted);font-size:12px;background:#ffffff75;border-radius:14px}.panel{padding:12px 4px 10px 0}.calendar-card,.reminder-card,.tip-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.calendar-card{padding:21px 18px 18px}.calendar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}.calendar-top h2{margin:0;font-size:14px}.month-arrows{display:flex;gap:4px}.month-arrows button{border:0;background:transparent;width:27px;height:27px;border-radius:8px;color:#697467}.month-arrows button:hover{background:var(--green2)}.weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}.weekdays{color:#a1a398;font-size:9px;margin-bottom:8px}.day{height:37px;display:grid;place-items:center;font-size:11px;color:#555b51;position:relative;border:0;background:transparent;border-radius:50%;width:36px;margin:auto}.day:hover{background:#f0f1eb}.day.other{color:#c3c4bd}.day.selected{background:var(--green);color:white;font-weight:700}.day.today:not(.selected){color:var(--green);font-weight:700;border:1px solid #adc09e}.day.has-event:after{content:'';position:absolute;width:4px;height:4px;border-radius:50%;background:var(--orange);bottom:3px}.day.selected.has-event:after{background:var(--lime)}.calendar-legend{display:flex;gap:15px;border-top:1px solid var(--line);padding-top:13px;margin-top:13px;font-size:9px;color:#898e83}.legend-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange);margin-right:5px;vertical-align:1px}.reminder-card{margin-top:14px;padding:17px 18px}.reminder-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.reminder-head strong{font-size:12px}.bell{width:28px;height:28px;background:#f5eee5;color:#b87c51;border-radius:9px;display:grid;place-items:center}.reminder-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid #f0eee8}.reminder-icon{font-size:13px;margin-top:1px}.reminder-item strong{font-size:10px;display:block}.reminder-item small{font-size:9px;color:var(--muted);display:block;margin-top:4px}.tip-card{margin-top:14px;background:#edf1e7;border:0;padding:17px 18px;box-shadow:none}.tip-card strong{font-size:11px;color:#486247}.tip-card p{font-size:10px;line-height:1.7;color:#747e6e;margin:8px 0 0}.modal-backdrop{position:fixed;inset:0;background:#1b241c66;z-index:5;display:grid;place-items:center;padding:20px}.modal-backdrop[hidden]{display:none!important}.modal{width:min(460px,100%);background:var(--paper);border-radius:20px;padding:25px;box-shadow:0 24px 80px #1b251d33}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modal-head h2{margin:0;font-size:18px}.close{border:0;background:#f2f1eb;border-radius:9px;width:32px;height:32px}.field{margin:13px 0}.field label{display:block;color:#6f746b;font-size:10px;font-weight:600;margin-bottom:7px}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:10px;background:white;padding:11px;color:var(--ink)}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.switch-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:11px;color:#555b51}.switch{appearance:none;width:36px;height:20px;border-radius:20px;background:#d9dbd3;position:relative;cursor:pointer;transition:.2s}.switch:checked{background:var(--green)}.switch:after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:white;left:3px;top:3px;transition:.2s}.switch:checked:after{left:19px}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.btn{border:0;border-radius:10px;padding:10px 16px;font-size:11px}.btn.secondary{background:#f0efe9;color:#5c6258}.btn.primary{background:var(--green);color:white}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#25392f;color:white;border-radius:11px;padding:11px 16px;font-size:11px;transition:.25s;z-index:8;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.view-switch{display:flex;background:#eeede7;border-radius:10px;padding:3px}.view-switch button{border:0;background:transparent;border-radius:8px;padding:6px 9px;color:#85897f;font-size:10px}.view-switch button.active{background:white;color:var(--green);box-shadow:0 2px 5px #0000000c}
-.auth-gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at top,#e8eee2 0,transparent 55%),var(--bg)}.auth-card{width:min(420px,100%);padding:42px 36px 32px;background:var(--paper);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);text-align:center}.auth-mark{margin:0 auto 18px}.auth-eyebrow{margin:0;color:#8b9385;font-size:10px;letter-spacing:2px;font-weight:700}.auth-card h1{margin:10px 0 8px;font-size:25px;letter-spacing:-.7px}.auth-copy{margin:0 0 26px;color:var(--muted);font-size:12px;line-height:1.8}.google-btn{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:12px;border:1px solid #dadce0;border-radius:10px;background:#fff;color:#3c4043;font-size:13px;font-weight:600;box-shadow:0 1px 2px #00000012;transition:background .15s,box-shadow .15s}.google-btn:hover{background:#f8faff;box-shadow:0 2px 5px #0000001c}.google-btn:disabled{cursor:wait;opacity:.65}.google-g{font-family:Arial,sans-serif;font-size:19px;font-weight:700;color:#4285f4}.auth-status{min-height:18px;margin:17px 0 0;color:var(--muted);font-size:11px;line-height:1.6}.auth-status.error{color:#b4493e}.signed-in-user{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:11px}.sign-out-btn{font-size:11px}.app[hidden],.auth-gate[hidden]{display:none!important}
+.auth-gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at top,#e8eee2 0,transparent 55%),var(--bg)}.auth-card{width:min(420px,100%);padding:42px 36px 32px;background:var(--paper);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);text-align:center}.auth-mark{margin:0 auto 18px}.auth-eyebrow{margin:0;color:#8b9385;font-size:10px;letter-spacing:2px;font-weight:700}.auth-card h1{margin:10px 0 8px;font-size:25px;letter-spacing:-.7px}.auth-copy{margin:0 0 26px;color:var(--muted);font-size:12px;line-height:1.8}.google-btn{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:12px;border:1px solid #dadce0;border-radius:10px;background:#fff;color:#3c4043;font-size:13px;font-weight:600;box-shadow:0 1px 2px #00000012;transition:background .15s,box-shadow .15s}.google-btn:hover{background:#f8faff;box-shadow:0 2px 5px #0000001c}.google-btn:disabled{cursor:wait;opacity:.65}.google-g{font-family:Arial,sans-serif;font-size:19px;font-weight:700;color:#4285f4}.line-btn{width:100%;min-height:48px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:10px;background:#06c755;color:#fff;font-size:13px;font-weight:700;transition:filter .15s}.line-btn:hover{filter:brightness(.95)}.auth-note{margin:9px 0 0;color:var(--muted);font-size:10px;line-height:1.6}.line-btn:disabled{cursor:wait;opacity:.65}.line-mark{font-size:11px;font-weight:700;border:1.5px solid #fff;border-radius:5px;padding:2px 4px}.auth-status{min-height:18px;margin:17px 0 0;color:var(--muted);font-size:11px;line-height:1.6}.auth-status.error{color:#b4493e}.signed-in-user{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:11px}.sign-out-btn{font-size:11px}.app[hidden],.auth-gate[hidden]{display:none!important}
     @media(max-width:1160px){.app{grid-template-columns:205px minmax(380px,1fr);padding:16px;gap:16px}.panel{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0}.calendar-card{grid-row:span 2}.reminder-card,.tip-card{margin:0}.sidebar{grid-row:span 2}}
     @media(max-width:760px){.app{display:block;padding:12px}.sidebar{padding:5px 2px 13px;display:block}.brand{padding:3px 7px 13px}.nav-label,.side-bottom{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav-btn{white-space:nowrap;padding:9px 11px;margin:0;font-size:11px}.main{padding:7px 2px}.topbar{margin:0 0 23px}.date-heading h1{font-size:25px}.panel{display:block;padding:12px 0}.reminder-card,.tip-card{margin-top:12px}.calendar-card{padding:18px}.task{padding:12px}.task-tools .tag{display:none}}
   </style>
@@ -22,8 +22,10 @@
     <div class="brand-mark auth-mark">✳</div>
     <p class="auth-eyebrow">DAYLIGHT PLANNER</p>
     <h1>歡迎回到日常</h1>
-    <p class="auth-copy">使用 Google 帳戶登入，繼續安排你的每一天。</p>
+    <p class="auth-copy">使用 Google 或 LINE 帳戶登入，繼續安排你的每一天。</p>
     <button id="googleSignIn" class="google-btn" type="button"><span class="google-g" aria-hidden="true">G</span>使用 Google 登入</button>
+    <button id="lineSignIn" class="line-btn" type="button"><span class="line-mark" aria-hidden="true">LINE</span>使用 LINE 登入</button>
+    <p class="auth-note">若是從一般瀏覽器進入，請用 LINE Developers 中的 LIFF URL 開啟網站，才能完成 LINE 登入。</p>
     <p id="authStatus" class="auth-status" role="status">正在確認登入狀態…</p>
   </section>
 </div>
@@ -70,6 +72,7 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithRedirect, getRedirectResult, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import liff from "https://esm.sh/@line/liff@2.31.1";
 
 // 請在 Firebase Console 建立 Web App，並將其設定填入下方。
 const firebaseConfig = {
@@ -77,15 +80,20 @@ const firebaseConfig = {
   authDomain: "daylight-planner-1103.firebaseapp.com",
   projectId: "daylight-planner-1103",
   appId: "1:470887891671:web:b6603965e7c0d1f99ae692",
-  measurementId: "G-837PQBZXES"
+  measurementId: "G-837PQBZXES",
+  // 在 LINE Developers > LIFF 中建立後，填入 LIFF ID。
+  liffId: "2012443844-qUYeTQLA"
 };
 const authGate = document.querySelector('#authGate');
 const plannerApp = document.querySelector('#plannerApp');
 const authStatus = document.querySelector('#authStatus');
 const googleSignInButton = document.querySelector('#googleSignIn');
+const lineSignInButton = document.querySelector('#lineSignIn');
+const liffConfigured = Boolean(firebaseConfig.liffId && !firebaseConfig.liffId.startsWith('YOUR_'));
 const signOutButton = document.querySelector('#signOutBtn');
 const signedInUser = document.querySelector('#signedInUser');
-const firebaseConfigured = Object.values(firebaseConfig).every(value => value && !value.startsWith('YOUR_'));
+let lineSessionActive = false;
+const firebaseConfigured = ['apiKey', 'authDomain', 'projectId', 'appId'].every(key => { const value = firebaseConfig[key]; return typeof value === 'string' && value && !value.startsWith('YOUR_'); });
 
 function showAuthError(error) {
   console.error('Firebase Authentication error:', error);
@@ -94,34 +102,114 @@ function showAuthError(error) {
     'auth/unauthorized-domain': '此網域尚未加入 Firebase 授權網域，請至 Firebase Console 新增。',
     'auth/popup-blocked': '登入視窗遭封鎖，請允許彈出視窗後再試。',
     'auth/popup-closed-by-user': '登入視窗已關閉，請再次嘗試。',
-    'auth/operation-not-allowed': 'Firebase 尚未啟用 Google 登入，請至 Authentication 設定。'
+    'auth/operation-not-allowed': 'Firebase 尚未啟用此登入方式，請至 Authentication 設定。',
+    'auth/invalid-provider-id': 'LINE 登入供應商尚未正確設定，請確認 Firebase 與 LINE Developers 設定。',
+    'auth/invalid-credential': '登入設定或驗證資料無效，請確認 LINE Channel ID、Issuer 與 Client Secret。',
+    'auth/network-request-failed': '網路連線失敗，請檢查網路後再試。'
   };
   authStatus.textContent = messages[error.code] || '登入失敗：' + (error.message || '請稍後再試。');
 }
 
 if (!firebaseConfigured) {
   authStatus.classList.add('error');
-  authStatus.textContent = '尚未設定 Firebase。請填入此頁程式中的 Firebase Web App 設定，並在 Firebase Authentication 啟用 Google 登入。';
+  authStatus.textContent = '尚未設定 Firebase。請填入 Firebase Web App 設定，並在 Firebase Authentication 啟用登入供應商。';
   googleSignInButton.disabled = true;
+  lineSignInButton.disabled = true;
 } else {
   const firebaseApp = initializeApp(firebaseConfig);
   const auth = getAuth(firebaseApp);
   const googleProvider = new GoogleAuthProvider();
+  lineSignInButton.disabled = !liffConfigured;
 
   getRedirectResult(auth).catch(error => { showAuthError(error); });
+
+  let liffInitPromise;
+  async function initializeLiff() {
+    if (!liffConfigured) throw new Error('尚未設定 LIFF ID。請在 firebaseConfig.liffId 填入 LIFF app ID。');
+    if (!liffInitPromise) liffInitPromise = liff.init({ liffId: firebaseConfig.liffId });
+    await liffInitPromise;
+  }
+  if (liffConfigured) {
+    initializeLiff().then(() => {
+      if (!liff.isLoggedIn()) return;
+      return liff.getProfile().then(profile => {
+        lineSessionActive = true;
+        authGate.hidden = true;
+        plannerApp.hidden = false;
+        signedInUser.textContent = profile.displayName || 'LINE 使用者';
+        signedInUser.title = '已透過 LINE 登入';
+        document.querySelector('.profile strong').textContent = profile.displayName || '我的日常';
+        document.querySelector('.avatar').textContent = (profile.displayName || '你').slice(0, 1);
+        googleSignInButton.hidden = true;
+        lineSignInButton.hidden = true;
+        document.querySelector('.auth-note').hidden = true;
+        authStatus.textContent = '';
+      });
+    }).catch(error => {
+      console.error('LIFF initialization failed:', error);
+      authStatus.classList.add('error');
+      authStatus.textContent = 'LINE 初始化失敗：' + (error.message || '請確認 LIFF Endpoint URL、LIFF ID 與授權設定。');
+    });
+  }
   onAuthStateChanged(auth, user => {
-    const isSignedIn = Boolean(user);
-    authGate.hidden = isSignedIn;
-    plannerApp.hidden = !isSignedIn;
-    if (isSignedIn) {
+    if (user) {
+      authGate.hidden = true;
+      plannerApp.hidden = false;
       authStatus.textContent = '';
       signedInUser.textContent = user.displayName || user.email || '';
       signedInUser.title = user.email || '';
+      document.querySelector('.profile strong').textContent = user.displayName || '我的日常';
+      document.querySelector('.avatar').textContent = (user.displayName || '你').slice(0, 1);
+    } else if (!lineSessionActive) {
+      authGate.hidden = false;
+      plannerApp.hidden = true;
     }
   }, showAuthError);
 
+  lineSignInButton.disabled = !liffConfigured;
+  lineSignInButton.addEventListener('click', async () => {
+    if (!liffConfigured) {
+      authStatus.classList.add('error');
+      authStatus.textContent = '尚未設定 LIFF ID。請在 firebaseConfig.liffId 填入 LIFF app ID。';
+      return;
+    }
+    lineSignInButton.disabled = true;
+    authStatus.classList.remove('error');
+    authStatus.textContent = '正在連線至 LINE…';
+    try {
+      await initializeLiff();
+      if (!liff.isLoggedIn()) {
+        if (liff.isInClient()) {
+          authStatus.textContent = '請從 LINE 內開啟 LIFF 網址，LINE 會自動完成登入。';
+          lineSignInButton.disabled = false;
+          return;
+        }
+        liff.login({ redirectUri: window.location.href });
+        return;
+      }
+      const profile = await liff.getProfile();
+      lineSessionActive = true;
+      authGate.hidden = true;
+      plannerApp.hidden = false;
+      signedInUser.textContent = profile.displayName || 'LINE 使用者';
+      signedInUser.title = '已透過 LINE 登入';
+      document.querySelector('.profile strong').textContent = profile.displayName || '我的日常';
+      document.querySelector('.avatar').textContent = (profile.displayName || '你').slice(0, 1);
+      googleSignInButton.hidden = true;
+      lineSignInButton.hidden = true;
+      document.querySelector('.auth-note').hidden = true;
+      authStatus.textContent = '';
+    } catch (error) {
+      console.error('LIFF initialization or login failed:', error);
+      authStatus.classList.add('error');
+      authStatus.textContent = error.message || 'LINE 登入失敗，請確認 LIFF 設定後再試。';
+      lineSignInButton.disabled = false;
+    }
+  });
+
   googleSignInButton.addEventListener('click', async () => {
     googleSignInButton.disabled = true;
+    lineSignInButton.disabled = true;
     authStatus.classList.remove('error');
     authStatus.textContent = '正在連線至 Google…';
     try {
@@ -129,9 +217,10 @@ if (!firebaseConfigured) {
     } catch (error) {
       if (['auth/popup-blocked', 'auth/web-storage-unsupported'].includes(error.code)) {
         try { await signInWithRedirect(auth, googleProvider); }
-        catch (redirectError) { showAuthError(redirectError); googleSignInButton.disabled = false; }
+        catch (redirectError) { showAuthError(redirectError); lineSignInButton.disabled = !liffConfigured; googleSignInButton.disabled = false; }
       } else {
         showAuthError(error);
+        lineSignInButton.disabled = !liffConfigured;
         googleSignInButton.disabled = false;
       }
     }
@@ -139,7 +228,7 @@ if (!firebaseConfigured) {
 
   signOutButton.addEventListener('click', async () => {
     signOutButton.disabled = true;
-    try { await signOut(auth); }
+    try { if (lineSessionActive && liffConfigured) { await initializeLiff(); if (liff.isLoggedIn()) liff.logout(); lineSessionActive = false; authGate.hidden = false; plannerApp.hidden = true; signedInUser.textContent = ''; googleSignInButton.hidden = false; lineSignInButton.hidden = false; document.querySelector('.auth-note').hidden = false; return; } await signOut(auth); }
     catch (error) { console.error('Firebase sign-out error:', error); toast('登出失敗，請再試一次'); }
     finally { signOutButton.disabled = false; }
   });
