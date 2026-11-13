@@ -17,7 +17,15 @@
   </style>
 </head>
 <body>
-<div id="authGate" class="auth-gate" aria-live="polite">
+<div id="loadingGate" class="auth-gate" aria-live="polite">
+  <section class="auth-card">
+    <div class="brand-mark auth-mark">✳</div>
+    <p class="auth-eyebrow">DAYLIGHT PLANNER</p>
+    <h1>正在確認登入狀態</h1>
+    <p class="auth-copy">請稍候，正在為你開啟日常。</p>
+  </section>
+</div>
+<div id="authGate" class="auth-gate" aria-live="polite" hidden>
   <section class="auth-card">
     <div class="brand-mark auth-mark">✳</div>
     <p class="auth-eyebrow">DAYLIGHT PLANNER</p>
@@ -85,6 +93,7 @@ const firebaseConfig = {
   liffId: "2012443844-qUYeTQLA"
 };
 const authGate = document.querySelector('#authGate');
+const loadingGate = document.querySelector('#loadingGate');
 const plannerApp = document.querySelector('#plannerApp');
 const authStatus = document.querySelector('#authStatus');
 const googleSignInButton = document.querySelector('#googleSignIn');
@@ -93,7 +102,31 @@ const liffConfigured = Boolean(firebaseConfig.liffId && !firebaseConfig.liffId.s
 const signOutButton = document.querySelector('#signOutBtn');
 const signedInUser = document.querySelector('#signedInUser');
 let lineSessionActive = false;
+let firebaseSessionActive = false;
+let redirectResultUser = null;
+let firebaseAuthReady = false;
+let redirectResultReady = false;
+let liffAuthReady = !liffConfigured;
 const firebaseConfigured = ['apiKey', 'authDomain', 'projectId', 'appId'].every(key => { const value = firebaseConfig[key]; return typeof value === 'string' && value && !value.startsWith('YOUR_'); });
+
+function showPlanner(displayName, accountText = '', accountTitle = '') {
+  loadingGate.hidden = true;
+  authGate.hidden = true;
+  plannerApp.hidden = false;
+  authStatus.textContent = '';
+  authStatus.classList.remove('error');
+  signedInUser.textContent = accountText || displayName || '';
+  signedInUser.title = accountTitle || '';
+  document.querySelector('.profile strong').textContent = displayName || '我的日常';
+  document.querySelector('.avatar').textContent = (displayName || '你').slice(0, 1);
+}
+
+function showAuthGateWhenReady() {
+  if (!firebaseAuthReady || !redirectResultReady || !liffAuthReady || firebaseSessionActive || lineSessionActive) return;
+  loadingGate.hidden = true;
+  plannerApp.hidden = true;
+  authGate.hidden = false;
+}
 
 function showAuthError(error) {
   console.error('Firebase Authentication error:', error);
@@ -111,6 +144,8 @@ function showAuthError(error) {
 }
 
 if (!firebaseConfigured) {
+  loadingGate.hidden = true;
+  authGate.hidden = false;
   authStatus.classList.add('error');
   authStatus.textContent = '尚未設定 Firebase。請填入 Firebase Web App 設定，並在 Firebase Authentication 啟用登入供應商。';
   googleSignInButton.disabled = true;
@@ -121,7 +156,17 @@ if (!firebaseConfigured) {
   const googleProvider = new GoogleAuthProvider();
   lineSignInButton.disabled = !liffConfigured;
 
-  getRedirectResult(auth).catch(error => { showAuthError(error); });
+  getRedirectResult(auth).then(result => {
+    if (result?.user) {
+      const user = result.user;
+      redirectResultUser = user;
+      firebaseSessionActive = true;
+      showPlanner(user.displayName || user.email || '我的日常', user.displayName || user.email || '', user.email || '');
+    }
+  }).catch(error => { showAuthError(error); }).finally(() => {
+    redirectResultReady = true;
+    showAuthGateWhenReady();
+  });
 
   let liffInitPromise;
   async function initializeLiff() {
@@ -130,41 +175,42 @@ if (!firebaseConfigured) {
     await liffInitPromise;
   }
   if (liffConfigured) {
-    initializeLiff().then(() => {
-      if (!liff.isLoggedIn()) return;
-      return liff.getProfile().then(profile => {
+    initializeLiff().then(async () => {
+      if (liff.isLoggedIn()) {
+        const profile = await liff.getProfile();
         lineSessionActive = true;
-        authGate.hidden = true;
-        plannerApp.hidden = false;
-        signedInUser.textContent = profile.displayName || 'LINE 使用者';
-        signedInUser.title = '已透過 LINE 登入';
-        document.querySelector('.profile strong').textContent = profile.displayName || '我的日常';
-        document.querySelector('.avatar').textContent = (profile.displayName || '你').slice(0, 1);
         googleSignInButton.hidden = true;
         lineSignInButton.hidden = true;
         document.querySelector('.auth-note').hidden = true;
-        authStatus.textContent = '';
-      });
+        showPlanner(profile.displayName || '我的日常', profile.displayName || 'LINE 使用者', '已透過 LINE 登入');
+      }
     }).catch(error => {
       console.error('LIFF initialization failed:', error);
       authStatus.classList.add('error');
       authStatus.textContent = 'LINE 初始化失敗：' + (error.message || '請確認 LIFF Endpoint URL、LIFF ID 與授權設定。');
+    }).finally(() => {
+      liffAuthReady = true;
+      showAuthGateWhenReady();
     });
   }
   onAuthStateChanged(auth, user => {
+    firebaseAuthReady = true;
     if (user) {
-      authGate.hidden = true;
-      plannerApp.hidden = false;
-      authStatus.textContent = '';
-      signedInUser.textContent = user.displayName || user.email || '';
-      signedInUser.title = user.email || '';
-      document.querySelector('.profile strong').textContent = user.displayName || '我的日常';
-      document.querySelector('.avatar').textContent = (user.displayName || '你').slice(0, 1);
-    } else if (!lineSessionActive) {
-      authGate.hidden = false;
-      plannerApp.hidden = true;
+      redirectResultUser = null;
+      firebaseSessionActive = true;
+      showPlanner(user.displayName || user.email || '我的日常', user.displayName || user.email || '', user.email || '');
+    } else if (redirectResultUser) {
+      firebaseSessionActive = true;
+      showPlanner(redirectResultUser.displayName || redirectResultUser.email || '我的日常', redirectResultUser.displayName || redirectResultUser.email || '', redirectResultUser.email || '');
+    } else {
+      firebaseSessionActive = false;
+      showAuthGateWhenReady();
     }
-  }, showAuthError);
+  }, error => {
+    firebaseAuthReady = true;
+    showAuthError(error);
+    showAuthGateWhenReady();
+  });
 
   lineSignInButton.disabled = !liffConfigured;
   lineSignInButton.addEventListener('click', async () => {
@@ -189,16 +235,10 @@ if (!firebaseConfigured) {
       }
       const profile = await liff.getProfile();
       lineSessionActive = true;
-      authGate.hidden = true;
-      plannerApp.hidden = false;
-      signedInUser.textContent = profile.displayName || 'LINE 使用者';
-      signedInUser.title = '已透過 LINE 登入';
-      document.querySelector('.profile strong').textContent = profile.displayName || '我的日常';
-      document.querySelector('.avatar').textContent = (profile.displayName || '你').slice(0, 1);
       googleSignInButton.hidden = true;
       lineSignInButton.hidden = true;
       document.querySelector('.auth-note').hidden = true;
-      authStatus.textContent = '';
+      showPlanner(profile.displayName || '我的日常', profile.displayName || 'LINE 使用者', '已透過 LINE 登入');
     } catch (error) {
       console.error('LIFF initialization or login failed:', error);
       authStatus.classList.add('error');
@@ -228,7 +268,7 @@ if (!firebaseConfigured) {
 
   signOutButton.addEventListener('click', async () => {
     signOutButton.disabled = true;
-    try { if (lineSessionActive && liffConfigured) { await initializeLiff(); if (liff.isLoggedIn()) liff.logout(); lineSessionActive = false; authGate.hidden = false; plannerApp.hidden = true; signedInUser.textContent = ''; googleSignInButton.hidden = false; lineSignInButton.hidden = false; document.querySelector('.auth-note').hidden = false; return; } await signOut(auth); }
+    try { if (lineSessionActive && liffConfigured) { await initializeLiff(); if (liff.isLoggedIn()) liff.logout(); lineSessionActive = false; loadingGate.hidden = true; authGate.hidden = false; plannerApp.hidden = true; signedInUser.textContent = ''; googleSignInButton.hidden = false; lineSignInButton.hidden = false; document.querySelector('.auth-note').hidden = false; return; } await signOut(auth); }
     catch (error) { console.error('Firebase sign-out error:', error); toast('登出失敗，請再試一次'); }
     finally { signOutButton.disabled = false; }
   });
